@@ -1,12 +1,11 @@
-var express = require('express');
+const express = require('express');
 
-var app = express.createServer(express.logger());
+const app = express();
 
-app.get('*', function(request, response) {
+app.get('*', (request, response) => {
   response.redirect(process.env.NEW_BASE_URL + (process.env.APPEND_PATH ? request.url : ""))
 });
 
-var port = process.env.PORT || 5000;
-app.listen(port, function() {
-  console.log("Listening on " + port);
-});
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => console.log("Listening on " + port));
